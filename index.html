@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inferring Indoor Layouts from Walking Trajectories using Diffusion</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <style>
+    html, body { height: 100%; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      background: #fff;
+      color: #222;
+    }
+
+    main { flex: 1 0 auto; }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .hero {
+      padding: 1.5rem 0 1rem;
+      text-align: center;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .subtitle-meta {
+      margin-top: 0.6rem;
+      font-size: 1.2rem;
+      color: #c44;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 1.5rem 0;
+    }
+
+    .section-title {
+      margin: 0 0 1rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .video-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+
+    .abstract {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    .footer {
+      margin-top: auto;
+      background: #f5f5f5;
+      padding: 0.8rem 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="title">Inferring Indoor Layouts from Walking Trajectories using Diffusion</h1>
+        <p class="subtitle-meta">In Submission</p>
+      </div>
+    </section>
+
+    <section class="section" id="demo-video">
+      <div class="container">
+        <h2 class="section-title">Demo Video</h2>
+        <div class="video-wrapper">
+          <video controls preload="metadata">
+            <source src="./static/video/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="abstract">
+      <div class="container">
+        <h2 class="section-title">Abstract</h2>
+        <div class="abstract">
+          <p>
+            This paper asks: is it possible to predict the indoor floorplan of a home from a few minutes of walking trajectories of a user inside her home?
+            The problem is non-trivial because an infinite number of floorplans are candidate solutions for the given trajectories; how can one identify the correct floorplan?
+            This paper leverages generative models to approach this question.
+            The key idea is to train a diffusion model with floorplan-trajectory pairs, where the floorplans are drawn from public datasets, and the trajectories are synthetically generated via simulation.
+            When designed correctly, the diffusion model learns a conditional distribution: given walking trajectories, the diffusion model can generate floorplan samples that have high likelihoods.
+            To further filter the floorplans, we show that the user can be asked to walk a bit more in certain regions of the home, allowing the diffusion model to reduce the uncertainty in its predictions.
+            We implement our model on the Stable Diffusion XL architecture, train on over 35,000 floorplans, and optimize for real-time operation.
+            Results show promising floorplan accuracy, beating existing baselines and degrading gracefully when trajectories are too few.
+            We believe our key idea of inverting trajectories to floorplans can be generalized to other inference applications.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>This site is anonymized for blind review.</p>
+  </footer>
+</body>
+</html>
