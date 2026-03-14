@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inferring Indoor Layouts from Walking Trajectories using Diffusion</title>
+  <title>Can Sparse Walking Patterns Disclose Spatial Maps?</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <style>
     html, body { height: 100%; }
@@ -22,7 +22,7 @@
     main { flex: 1 0 auto; }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1rem;
     }
@@ -57,8 +57,8 @@
     }
 
     .video-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+      width: 100%;
+      margin: 0;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -72,8 +72,8 @@
     }
 
     .abstract {
-      max-width: 900px;
-      margin: 0 auto;
+      width: 100%;
+      margin: 0;
       text-align: justify;
     }
 
@@ -90,7 +90,7 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1 class="title">Inferring Indoor Layouts from Walking Trajectories using Diffusion</h1>
+        <h1 class="title">Can Sparse Walking Patterns Disclose Spatial Maps?</h1>
         <p class="subtitle-meta">In Submission</p>
       </div>
     </section>
@@ -112,15 +112,16 @@
         <h2 class="section-title">Abstract</h2>
         <div class="abstract">
           <p>
-            This paper asks: is it possible to predict the indoor floorplan of a home from a few minutes of walking trajectories of a user inside her home?
-            The problem is non-trivial because an infinite number of floorplans are candidate solutions for the given trajectories; how can one identify the correct floorplan?
+            Imagine users walking in an indoor environment and a sensor (e.g., their smartphone) measuring their walking trajectories.
+            This paper asks: is it possible to infer the spatial map, or floorplan, from few minutes of the user's walking trajectories?
+            The problem is non-trivial because an infinite number of floorplans can possibly explain the measured trajectories; which one is correct?
             This paper leverages generative models to approach this question.
-            The key idea is to train a diffusion model with floorplan-trajectory pairs, where the floorplans are drawn from public datasets, and the trajectories are synthetically generated via simulation.
-            When designed correctly, the diffusion model learns a conditional distribution: given walking trajectories, the diffusion model can generate floorplan samples that have high likelihoods.
-            To further filter the floorplans, we show that the user can be asked to walk a bit more in certain regions of the home, allowing the diffusion model to reduce the uncertainty in its predictions.
+            The key idea is to train a diffusion model with floorplan-trajectory pairs, where the floorplans are drawn from public datasets, and the trajectories are synthetically generated for these floorplans.
+            When designed correctly, the diffusion model learns a conditional distribution p(x|y), where x denotes floorplans and y is the given trajectory measurements.
+            Samples from this distribution give us floorplans that are highly likely solutions.
+            To further narrow down the floorplans, we design a closed-loop method that requests the user to walk a bit more in a specific region, and uses the additional trajectory information to reduce the floorplan uncertainty.
             We implement our model on the Stable Diffusion XL architecture, train on over 35,000 floorplans, and optimize for real-time operation.
-            Results show promising floorplan accuracy, beating existing baselines and degrading gracefully when trajectories are too few.
-            We believe our key idea of inverting trajectories to floorplans can be generalized to other inference applications.
+            Results show promising floorplan accuracy in both simulated and real-world settings and degrade gracefully when trajectories are sparse.
           </p>
         </div>
       </div>
